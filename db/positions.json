@@ -36,13 +36,13 @@
   },
   "position8": {
     "position": "C2",
-    "machineIdId": "machine1",
+    "machineId": "machine1",
     "uid": "SCspHttooidSZ5G7uVBecyFTBA23"
   },
   "position9": {
     "position": "C3",
-    "machineId": "SCspHttooidSZ5G7uVBecyFTBA23",
-    "uid": "myuidhere"
+    "machineId": "machine1",
+    "uid": "SCspHttooidSZ5G7uVBecyFTBA23"
   },
   "position10": {
     "position": "A1",
