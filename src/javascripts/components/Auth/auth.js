@@ -17,7 +17,7 @@ const loginButton = () => {
   // /* <img src=${monkeyBut} /> */
 
   utilities.printToDom('auth', domString);
-  $('google-auth').click(signMeIn);
+  $('#google-auth').click(signMeIn);
 };
 
 export default { loginButton };
