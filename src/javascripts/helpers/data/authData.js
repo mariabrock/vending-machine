@@ -13,6 +13,7 @@ const checkLoginStatus = () => {
       stockDiv.removeClass('hide');
       logoutNavbar.removeClass('hide');
       authDiv.addClass('hide');
+      console.error(user.uid);
     } else {
       //  nobody logged in SHOW auth component
       stockDiv.addClass('hide');
