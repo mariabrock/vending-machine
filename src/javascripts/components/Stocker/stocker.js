@@ -31,8 +31,34 @@ const buildTheStocker = (uid) => {
       domString += '</div>';
       utilities.printToDom('stock', domString);
       $('#stock').on('click', '.delete-snack-position', deleteFromMachine);
+      // eslint-disable-next-line no-use-before-define
+      $('#stock').on('click', '.add-snack-position', addToMachine);
     });
 };
 
-export default { buildTheStocker };
+const addToMachine = (e) => {
+  e.stopImmediatePropagation();
+  const { uid } = firebase.auth().currentUser;
+  const inputText = $(e.target).siblings().val();
+  smash.getAvailablePositions()
+    .then((positions) => {
+      const selectedPosition = positions.find((x) => x.position.toLowerCase() === inputText.toLowerCase());
+      if (selectedPosition) {
+        const newSnackPosition = {
+          positionId: selectedPosition.id,
+          snackId: e.target.id,
+          machineId: selectedPosition.machineId,
+          uid,
+        };
+        snackPositionData.createSnackPosition(newSnackPosition).then(() => {
+          // eslint-disable-next-line no-use-before-define
+          buildTheStocker(uid);
+          machine.buildTheMachine();
+        });
+      }
+    })
+    .catch((error) => console.error(error));
+};
+
+export default { buildTheStocker, addToMachine };
 // you canot call this in the main because the uid isn't available until auth when the user logs in, goes in authData
