@@ -2,10 +2,11 @@ import './stockCard.scss';
 
 const makeASnack = (snack) => {
   let domString = `
-  <div class="col-3 card snack-card">
+  <div class="card col-3 snack-card">
   <div class="card-body">
     <h5 class="card-title">${snack.name}</h5>
-    <p class="card-text">${snack.price / 100}</p>
+    <p class="card-text">$${snack.price / 100}</p>
+    <button class="btn btn-secondary quick-stock" id="snack-${snack.id}">Stock 5</button>
   </div>
   <div class="card-footer">`;
   if (snack.snackPositionId !== '') {
